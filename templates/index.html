@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        form { margin-bottom: 30px; }
+        input, textarea { width: 60%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        table { border-collapse: collapse; width: 60%; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #007bff; color: white; }
+    </style>
+</head>
+<body>
+    <h1>AI-Powered Resume Analyzer</h1>
+
+    <!-- Upload Form -->
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Candidate Name" required><br><br>
+        <input type="file" name="resume_file" accept=".pdf,.docx" required><br><br>
+        <button type="submit">Upload Resume</button>
+    </form>
+
+    <!-- Candidate Rankings Table -->
+    <h2>Candidate Rankings</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Skills</th>
+            <th>Match %</th>
+        </tr>
+        {% for c in candidates %}
+        <tr>
+            <td>{{ c[0] }}</td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
